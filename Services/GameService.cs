@@ -8,6 +8,15 @@ namespace VideogameStatsApi.Services
     {
         // Reference: Created GameService - https://youtu.be/RwQVRXEs370?si=N1sEu7UzYicQTNFa&t=1885
 
+        //Reference: Moved test data to Service -  https://youtu.be/RwQVRXEs370?si=DwAX1WHKcdHjEZcH&t=1906
+
+        static List<Game> games = new List<Game>{
+            new Game { Id = 1, Name = "Valorant" },
+            new Game { Id = 2, Name = "Rainbow Six Siege" },
+            new Game { Id = 3, Name = "CS:GO" }
+        };
+
+
         public Task<Game> AddGameAsync(Game game)
         {
             throw new NotImplementedException();
@@ -18,10 +27,8 @@ namespace VideogameStatsApi.Services
             throw new NotImplementedException();
         }
 
-        public Task<List<Game>> GetAllGamesAsync()
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<List<Game>> GetAllGamesAsync()
+        => await Task.FromResult(games);
 
         public Task<Game> GetGameByIdAsync(int id)
         {
