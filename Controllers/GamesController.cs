@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using VideogameStatsApi.Dtos;
 using VideogameStatsApi.Models;
 using VideogameStatsApi.Services;
 
@@ -14,7 +15,7 @@ public class GamesController(IGameService service) : ControllerBase
 
     [HttpGet]
 
-    public async Task<ActionResult<List<Game>>> GetGames()
+    public async Task<ActionResult<List<GameDto>>> GetGames()
         => Ok(await service.GetAllGamesAsync());
 
     [HttpGet("{id}")]

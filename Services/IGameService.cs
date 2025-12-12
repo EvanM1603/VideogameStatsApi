@@ -1,4 +1,5 @@
-﻿using VideogameStatsApi.Models;
+﻿using VideogameStatsApi.Dtos;
+using VideogameStatsApi.Models;
 
 namespace VideogameStatsApi.Services
 {
@@ -6,7 +7,7 @@ namespace VideogameStatsApi.Services
     {
         //Reference: Created IGameService interface - https://youtu.be/RwQVRXEs370?si=XXQ2R4h35wMRBZRf&t=1854 
 
-        Task<List<Game>> GetAllGamesAsync();
+        Task<List<GameDto>> GetAllGamesAsync();
         Task<Game?> GetGameByIdAsync(int id);
         Task<Game> GetGameByNameAsync();
         Task<Game> AddGameAsync(Game game);

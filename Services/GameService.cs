@@ -1,6 +1,7 @@
 ﻿using VideogameStatsApi.Models;
 using VideogameStatsApi.Data;
 using Microsoft.EntityFrameworkCore;
+using VideogameStatsApi.Dtos;
 
 // Last working on this
 
@@ -10,7 +11,7 @@ namespace VideogameStatsApi.Services
     {
         // Reference: Created GameService - https://youtu.be/RwQVRXEs370?si=N1sEu7UzYicQTNFa&t=1885
 
-        public Task<Game> AddGameAsync(Game game)
+        public Task<GameDto> AddGameAsync(Game game)
         {
             throw new NotImplementedException();
         }
@@ -20,16 +21,27 @@ namespace VideogameStatsApi.Services
             throw new NotImplementedException();
         }
 
-        public async Task<List<Game>> GetAllGamesAsync()
-        => await context.Games.ToListAsync();
+        public async Task<List<GameDto>> GetAllGamesAsync()
+        => await context.Games.Select(x => new GameDto
+            {
+                Id = x.Id,
+                Name = x.Name,
+            }).ToListAsync();
 
-        public async Task<Game?> GetGameByIdAsync(int id)
+        public async Task<GameDto> GetGameByIdAsync(int id)
         {
-            var result = await context.Games.FindAsync(id);
+            var result = await context.Games
+                .Where(x => x.Id == id)
+                .Select(x => new GameDto
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                })
+                .FirstOrDefaultAsync();
             return result;
         }
 
-        public Task<Game> GetGameByNameAsync()
+        public Task<GameDto> GetGameByNameAsync()
         {
             throw new NotImplementedException();
         }
