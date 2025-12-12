@@ -6,7 +6,7 @@ namespace VideogameStatsApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PlayerController : ControllerBase
+    public class PlayersController : ControllerBase
     {
         // GET: api/<PlayerController>
         [HttpGet]
