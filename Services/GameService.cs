@@ -30,9 +30,10 @@ namespace VideogameStatsApi.Services
         public async Task<List<Game>> GetAllGamesAsync()
         => await Task.FromResult(games);
 
-        public Task<Game> GetGameByIdAsync(int id)
+        public async Task<Game?> GetGameByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            var result = games.FirstOrDefault(x => x.Id == id);
+            return await Task.FromResult(result);
         }
 
         public Task<Game> GetGameByNameAsync()

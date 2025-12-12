@@ -6,14 +6,22 @@ using VideogameStatsApi.Services;
 
 namespace VideogameStatsApi.Controllers;
 
-    [Route("api/[controller]")]
-    [ApiController]
-    public class GamesController(IGameService service) : ControllerBase
+[Route("api/[controller]")]
+[ApiController]
+public class GamesController(IGameService service) : ControllerBase
+{
+    // Reference: Updated Controller - https://youtu.be/RwQVRXEs370?si=XSSpE8rut7tKsh1i&t=1245 
+
+    [HttpGet]
+
+    public async Task<ActionResult<List<Game>>> GetGames()
+        => Ok(await service.GetAllGamesAsync());
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult<Game>> GetGame(int id)
     {
-        // Reference: Updated Controller - https://youtu.be/RwQVRXEs370?si=XSSpE8rut7tKsh1i&t=1245 
+        var game = await service.GetGameByIdAsync(id);
+        return game is null ? NotFound("No game found with this id. ") : Ok(game);
+    }
 
-        [HttpGet]
-
-        public async Task<ActionResult<List<Game>>> GetGames()
-            => Ok(await service.GetAllGamesAsync());
     }
