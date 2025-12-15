@@ -11,28 +11,47 @@ namespace VideogameStatsApi.Services
     {
         // Reference: Created GameService - https://youtu.be/RwQVRXEs370?si=N1sEu7UzYicQTNFa&t=1885
 
-        public Task<GameDto> AddGameAsync(Game game)
+        public async Task<GameResponse> AddGameAsync(CreateGameRequest game)
         {
-            throw new NotImplementedException();
+            var newGame = new Game
+            {
+                Id = game.GameId,
+                Name = game.GameName
+            };
+
+            context.Games.Add(newGame);
+            await context.SaveChangesAsync();
+
+            return new GameResponse
+            {
+                Id = newGame.Id,
+                Name = game.GameName
+            };
         }
 
-        public Task<bool> DeleteGameAsync(int id)
+        public async Task<bool> DeleteGameAsync(int id)
         {
-            throw new NotImplementedException();
+            var gameToDelete = await context.Games.FindAsync(id);
+            if (gameToDelete is null)
+                return false;
+
+            context.Games.Remove(gameToDelete);
+            await context.SaveChangesAsync();
+            return true;
         }
 
-        public async Task<List<GameDto>> GetAllGamesAsync()
-        => await context.Games.Select(x => new GameDto
+        public async Task<List<GameResponse>> GetAllGamesAsync()
+        => await context.Games.Select(x => new GameResponse
             {
                 Id = x.Id,
                 Name = x.Name,
             }).ToListAsync();
 
-        public async Task<GameDto> GetGameByIdAsync(int id)
+        public async Task<GameResponse> GetGameByIdAsync(int id)
         {
             var result = await context.Games
                 .Where(x => x.Id == id)
-                .Select(x => new GameDto
+                .Select(x => new GameResponse
                 {
                     Id = x.Id,
                     Name = x.Name,
@@ -41,14 +60,22 @@ namespace VideogameStatsApi.Services
             return result;
         }
 
-        public Task<GameDto> GetGameByNameAsync()
+        public Task<GameResponse> GetGameByNameAsync()
         {
             throw new NotImplementedException();
         }
 
-        public Task<bool> UpdateGameAsync(int id, Game game)
+        public async Task<bool> UpdateGameAsync(int id, UpdateGameRequest game)
         {
-            throw new NotImplementedException();
+            var existingGame = await context.Games.FindAsync(id);
+            if(existingGame is null) 
+                return false;
+
+            existingGame.Id = game.GameId;
+            existingGame.Name = game.GameName;
+
+            await context.SaveChangesAsync();
+            return true;
         }
     }
 }

@@ -7,11 +7,11 @@ namespace VideogameStatsApi.Services
     {
         //Reference: Created IGameService interface - https://youtu.be/RwQVRXEs370?si=XXQ2R4h35wMRBZRf&t=1854 
 
-        Task<List<GameDto>> GetAllGamesAsync();
-        Task<Game?> GetGameByIdAsync(int id);
-        Task<Game> GetGameByNameAsync();
-        Task<Game> AddGameAsync(Game game);
-        Task<bool> UpdateGameAsync(int id, Game game);
+        Task<List<GameResponse>> GetAllGamesAsync();
+        Task<GameResponse?> GetGameByIdAsync(int id);
+        Task<GameResponse> GetGameByNameAsync();
+        Task<GameResponse> AddGameAsync(CreateGameRequest game);
+        Task<bool> UpdateGameAsync(int id, UpdateGameRequest game);
         Task<bool> DeleteGameAsync(int id);
 
     }
