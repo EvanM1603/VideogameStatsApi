@@ -16,6 +16,9 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // Reference: Created IGameService and GameService https://youtu.be/RwQVRXEs370?si=O2bIGmh8MfBt1CF_&t=1604 
 
 builder.Services.AddScoped<IGameService, GameService>();
+//builder.Services.AddScoped<IMatchService, MatchService>();
+builder.Services.AddScoped<IPlayerService, PlayerService>();
+//builder.Services.AddScoped<IPlayerMatchStatService, PlayerMatchStatService>();
 
 var app = builder.Build();
 

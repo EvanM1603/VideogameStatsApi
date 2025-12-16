@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using VideogameStatsApi.Dtos;
+using VideogameStatsApi.Services;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -6,38 +8,40 @@ namespace VideogameStatsApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PlayersController : ControllerBase
+    public class PlayersController(IPlayerService service) : ControllerBase
     {
-        // GET: api/<PlayerController>
+        // Reference: Updated Controller - https://youtu.be/RwQVRXEs370?si=XSSpE8rut7tKsh1i&t=1245 
+
         [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        public async Task<ActionResult<List<PlayerResponse>>> GetPlayers()
+            => Ok(await service.GetAllPlayersAsync());
 
-        // GET api/<PlayerController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<ActionResult<PlayerResponse>> GetPlayer(int id)
         {
-            return "value";
+            var player = await service.GetPlayerByIdAsync(id);
+            return player is null ? NotFound("No Player found with this id. ") : Ok(player);
         }
 
-        // POST api/<PlayerController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<ActionResult<PlayerResponse>> AddPlayer(CreatePlayerRequest player)
         {
+            var createdPlayer = await service.AddPlayerAsync(player);
+            return CreatedAtAction(nameof(GetPlayer), new { id = createdPlayer.Id }, createdPlayer);
         }
 
-        // PUT api/<PlayerController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<ActionResult> UpdatePlayer(int id, UpdatePlayerRequest player)
         {
+            var updated = await service.UpdatePlayerAsync(id, player);
+            return updated ? NoContent() : NotFound("Player with the given Id was not found. ");
         }
 
-        // DELETE api/<PlayerController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<ActionResult> DeletePlayer(int id)
         {
+            var deleted = await service.DeletePlayerAsync(id);
+            return deleted ? NoContent() : NotFound("Player with the given Id was not found.");
         }
     }
 }

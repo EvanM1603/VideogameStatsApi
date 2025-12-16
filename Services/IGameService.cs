@@ -1,5 +1,4 @@
 ﻿using VideogameStatsApi.Dtos;
-using VideogameStatsApi.Models;
 
 namespace VideogameStatsApi.Services
 {

@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Xml.Serialization;
 using VideogameStatsApi.Dtos;
-using VideogameStatsApi.Models;
 using VideogameStatsApi.Services;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -19,7 +17,7 @@ public class GamesController(IGameService service) : ControllerBase
         => Ok(await service.GetAllGamesAsync());
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<Game>> GetGame(int id)
+    public async Task<ActionResult<GameResponse>> GetGame(int id)
     {
         var game = await service.GetGameByIdAsync(id);
         return game is null ? NotFound("No game found with this id. ") : Ok(game);
