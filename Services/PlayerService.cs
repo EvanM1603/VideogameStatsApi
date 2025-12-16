@@ -49,7 +49,7 @@ namespace VideogameStatsApi.Services
         }).ToListAsync();
 
         // Get by Id
-        public async Task<PlayerResponse> GetPlayerByIdAsync(int id)
+        public async Task<PlayerResponse?> GetPlayerByIdAsync(int id)
         {
             var result = await context.Players
                 .Where(p => p.Id == id)
@@ -63,9 +63,17 @@ namespace VideogameStatsApi.Services
         }
 
         // Get by InGameName
-        public Task<PlayerResponse> GetPlayerByInGameNameAsync()
+        public async Task<PlayerResponse?> GetPlayerByInGameNameAsync(string inGameName)
         {
-            throw new NotImplementedException();
+            var result = await context.Players
+                .Where(p => p.InGameName == inGameName)
+                .Select(p => new PlayerResponse
+                {
+                    Id = p.Id,
+                    InGameName = p.InGameName,
+                })
+                .FirstOrDefaultAsync();
+            return result;
         }
 
         // Update

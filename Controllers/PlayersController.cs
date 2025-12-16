@@ -17,17 +17,24 @@ namespace VideogameStatsApi.Controllers
             => Ok(await service.GetAllPlayersAsync());
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<PlayerResponse>> GetPlayer(int id)
+        public async Task<ActionResult<PlayerResponse>> GetPlayerById(int id)
         {
             var player = await service.GetPlayerByIdAsync(id);
             return player is null ? NotFound("No Player found with this id. ") : Ok(player);
+        }
+
+        [HttpGet("{name}")]
+        public async Task<ActionResult<PlayerResponse>> GetPlayerByName(string inGameName)
+        {
+            var player = await service.GetPlayerByInGameNameAsync(inGameName);
+            return player is null ? NotFound("No player found with this name. ") : Ok(player);
         }
 
         [HttpPost]
         public async Task<ActionResult<PlayerResponse>> AddPlayer(CreatePlayerRequest player)
         {
             var createdPlayer = await service.AddPlayerAsync(player);
-            return CreatedAtAction(nameof(GetPlayer), new { id = createdPlayer.Id }, createdPlayer);
+            return CreatedAtAction(nameof(GetPlayerById), new { id = createdPlayer.Id }, createdPlayer);
         }
 
         [HttpPut("{id}")]

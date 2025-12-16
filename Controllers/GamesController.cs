@@ -17,17 +17,24 @@ public class GamesController(IGameService service) : ControllerBase
         => Ok(await service.GetAllGamesAsync());
 
     [HttpGet("{id}")]
-    public async Task<ActionResult<GameResponse>> GetGame(int id)
+    public async Task<ActionResult<GameResponse>> GetGameById(int id)
     {
         var game = await service.GetGameByIdAsync(id);
         return game is null ? NotFound("No game found with this id. ") : Ok(game);
+    }
+
+    [HttpGet("{name}")]
+    public async Task<ActionResult<GameResponse>> GetGameByName(string name)
+    {
+        var game = await service.GetGameByNameAsync(name);
+        return game is null ? NotFound("No game found with this name. ") : Ok(game);
     }
 
     [HttpPost]
     public async Task<ActionResult<GameResponse>> AddGame(CreateGameRequest game)
     {
         var createdGame = await service.AddGameAsync(game);
-        return CreatedAtAction(nameof(GetGame), new { id = createdGame.Id }, createdGame);
+        return CreatedAtAction(nameof(GetGameById), new { id = createdGame.Id }, createdGame);
     }
 
     [HttpPut("{id}")]

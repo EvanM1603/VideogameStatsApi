@@ -8,7 +8,7 @@ namespace VideogameStatsApi.Services
 
         Task<List<GameResponse>> GetAllGamesAsync();
         Task<GameResponse?> GetGameByIdAsync(int id);
-        Task<GameResponse> GetGameByNameAsync();
+        Task<GameResponse?> GetGameByNameAsync(string name);
         Task<GameResponse> AddGameAsync(CreateGameRequest game);
         Task<bool> UpdateGameAsync(int id, UpdateGameRequest game);
         Task<bool> DeleteGameAsync(int id);

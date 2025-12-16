@@ -9,7 +9,7 @@ namespace VideogameStatsApi.Services
 
         Task<List<PlayerResponse>> GetAllPlayersAsync();
         Task<PlayerResponse?> GetPlayerByIdAsync(int id);
-        Task<PlayerResponse> GetPlayerByInGameNameAsync();
+        Task<PlayerResponse?> GetPlayerByInGameNameAsync(string inGameName);
         Task<PlayerResponse> AddPlayerAsync(CreatePlayerRequest player);
         Task<bool> UpdatePlayerAsync(int id, UpdatePlayerRequest player);
         Task<bool> DeletePlayerAsync(int id);
