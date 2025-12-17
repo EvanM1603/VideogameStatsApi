@@ -16,7 +16,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 // Reference: Added Services and Service Interfaces - https://youtu.be/RwQVRXEs370?si=RoMOvWGPi6bd2YNl&t=1466
 builder.Services.AddScoped<IGameService, GameService>();
-//builder.Services.AddScoped<IMatchService, MatchService>();
+builder.Services.AddScoped<IMatchService, MatchService>();
 builder.Services.AddScoped<IPlayerService, PlayerService>();
 //builder.Services.AddScoped<IPlayerMatchStatService, PlayerMatchStatService>();
 
