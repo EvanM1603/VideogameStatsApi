@@ -12,10 +12,12 @@ namespace VideogameStatsApi.Controllers
     {
         // Reference: Updated Controller after Dtos - https://youtu.be/RwQVRXEs370?si=edblfYxP61HN3ZPn&t=3617
 
+        // Get all Games
         [HttpGet]
         public async Task<ActionResult<List<GameResponse>>> GetGames()
             => Ok(await service.GetAllGamesAsync());
 
+        // Get Game by Id
         [HttpGet("{id}")]
         public async Task<ActionResult<GameResponse>> GetGameById(int id)
         {
@@ -23,6 +25,7 @@ namespace VideogameStatsApi.Controllers
             return game is null ? NotFound("No game found with this id. ") : Ok(game);
         }
 
+        // Get Game by Name
         [HttpGet("{name}")]
         public async Task<ActionResult<GameResponse>> GetGameByName(string name)
         {
@@ -30,6 +33,7 @@ namespace VideogameStatsApi.Controllers
             return game is null ? NotFound("No game found with this name. ") : Ok(game);
         }
 
+        // Add Game
         [HttpPost]
         public async Task<ActionResult<GameResponse>> AddGame(CreateGameRequest game)
         {
@@ -37,6 +41,7 @@ namespace VideogameStatsApi.Controllers
             return CreatedAtAction(nameof(GetGameById), new { id = createdGame.Id }, createdGame);
         }
 
+        // Update existing Game
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateGame(int id, UpdateGameRequest game)
         {
@@ -44,6 +49,7 @@ namespace VideogameStatsApi.Controllers
             return updated ? NoContent() : NotFound("Game with the given Id was not found. ");
         }
 
+        // Delete existing Game
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteGame(int id)
         {

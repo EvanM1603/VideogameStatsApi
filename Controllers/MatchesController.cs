@@ -12,10 +12,12 @@ namespace VideogameStatsApi.Controllers
     {
         // Reference: Updated Controller after Dtos - https://youtu.be/RwQVRXEs370?si=edblfYxP61HN3ZPn&t=3617
 
+        // Get all Matches
         [HttpGet]
         public async Task<ActionResult<List<MatchResponse>>> GetMatches()
             => Ok(await service.GetAllMatchesAsync());
 
+        // Get Match by Id
         [HttpGet("{id}")]
         public async Task<ActionResult<MatchResponse>> GetMatchById(int id)
         {
@@ -23,6 +25,7 @@ namespace VideogameStatsApi.Controllers
             return match is null ? NotFound("No match found with this id. ") : Ok(match);
         }
 
+        // Add Match
         [HttpPost]
         public async Task<ActionResult<MatchResponse>> AddMatch(CreateMatchRequest match)
         {
@@ -30,6 +33,7 @@ namespace VideogameStatsApi.Controllers
             return CreatedAtAction(nameof(GetMatchById), new { id = createdMatch.Id }, createdMatch);
         }
 
+        // Update existing Match
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateMatch(int id, UpdateMatchRequest match)
         {
@@ -37,6 +41,7 @@ namespace VideogameStatsApi.Controllers
             return updated ? NoContent() : NotFound("Match with the given Id was not found. ");
         }
 
+        // Delete existing Match
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteMatch(int id)
         {
