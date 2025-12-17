@@ -4,8 +4,7 @@ namespace VideogameStatsApi.Services
 {
     public interface IPlayerService
     {
-        //Reference: Created IPlayerService interface - https://youtu.be/RwQVRXEs370?si=XXQ2R4h35wMRBZRf&t=1854 
-        // Used the IGameService to help create this
+        //Reference: Updated IPlayerService interface after Dtos - https://youtu.be/RwQVRXEs370?si=0Ca3ZfxYzS5fOH5J&t=3687
 
         /**
          * Gets all Players

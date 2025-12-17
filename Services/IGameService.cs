@@ -4,7 +4,7 @@ namespace VideogameStatsApi.Services
 {
     public interface IGameService
     {
-        //Reference: Created IGameService interface - https://youtu.be/RwQVRXEs370?si=XXQ2R4h35wMRBZRf&t=1854 
+        //Reference: Updated IGameService interface after Dtos - https://youtu.be/RwQVRXEs370?si=0Ca3ZfxYzS5fOH5J&t=3687
 
         /**
          * Gets all Games

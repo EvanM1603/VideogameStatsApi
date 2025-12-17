@@ -1,5 +1,6 @@
 ﻿namespace VideogameStatsApi.Dtos
 {
+    //Reference: Used to Create Dtos - https://youtu.be/RwQVRXEs370?si=J5DyOYwsu2vnNrvn&t=3538
     // The DTO returned when reading Player Data
     public class PlayerResponse
     {

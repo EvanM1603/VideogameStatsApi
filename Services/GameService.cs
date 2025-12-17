@@ -7,7 +7,7 @@ namespace VideogameStatsApi.Services
 {
     public class GameService(AppDbContext context) : IGameService
     {
-        // Reference: Created GameService - https://youtu.be/RwQVRXEs370?si=N1sEu7UzYicQTNFa&t=1885
+        // Reference: Updated GameService interface after Dtos - https://youtu.be/RwQVRXEs370?si=akx0K496feaAOHWc&t=3701
 
         /**
          * Creates a Game

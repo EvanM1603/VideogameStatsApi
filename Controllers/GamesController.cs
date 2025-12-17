@@ -10,7 +10,7 @@ namespace VideogameStatsApi.Controllers;
 [ApiController]
 public class GamesController(IGameService service) : ControllerBase
 {
-    // Reference: Updated Controller - https://youtu.be/RwQVRXEs370?si=XSSpE8rut7tKsh1i&t=1245 
+    // Reference: Updated Controller after Dtos - https://youtu.be/RwQVRXEs370?si=edblfYxP61HN3ZPn&t=3617
 
     [HttpGet]
     public async Task<ActionResult<List<GameResponse>>> GetGames()

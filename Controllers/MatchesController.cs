@@ -8,7 +8,7 @@ namespace VideogameStatsApi.Controllers
     [ApiController]
     public class MatchesController : ControllerBase
     {
-        // GET: api/<MatchController>
+        // Reference: Updated Controller after Dtos - https://youtu.be/RwQVRXEs370?si=edblfYxP61HN3ZPn&t=3617
         [HttpGet]
         public IEnumerable<string> Get()
         {

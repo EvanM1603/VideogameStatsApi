@@ -7,8 +7,7 @@ namespace VideogameStatsApi.Services
 {
     public class PlayerService(AppDbContext context) : IPlayerService
     {
-        // Reference: Created PlayerService - https://youtu.be/RwQVRXEs370?si=N1sEu7UzYicQTNFa&t=1885
-        // Used the GameService to help create this
+        // Reference: Updated PlayerService interface after Dtos - https://youtu.be/RwQVRXEs370?si=akx0K496feaAOHWc&t=3701
 
         /**
          * Creates a Player
