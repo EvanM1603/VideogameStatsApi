@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using VideogameStatsApi.Dtos;
+using VideogameStatsApi.Services;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -6,38 +8,40 @@ namespace VideogameStatsApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MatchesController : ControllerBase
+    public class MatchesController(IMatchService service) : ControllerBase
     {
         // Reference: Updated Controller after Dtos - https://youtu.be/RwQVRXEs370?si=edblfYxP61HN3ZPn&t=3617
+
         [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        public async Task<ActionResult<List<MatchResponse>>> GetMatches()
+            => Ok(await service.GetAllMatchesAsync());
 
-        // GET api/<MatchController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<ActionResult<MatchResponse>> GetMatchById(int id)
         {
-            return "value";
+            var match = await service.GetMatchByIdAsync(id);
+            return match is null ? NotFound("No match found with this id. ") : Ok(match);
         }
 
-        // POST api/<MatchController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<ActionResult<MatchResponse>> AddMatch(CreateMatchRequest match)
         {
+            var createdMatch = await service.AddMatchAsync(match);
+            return CreatedAtAction(nameof(GetMatchById), new { id = createdMatch.Id }, createdMatch);
         }
 
-        // PUT api/<MatchController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<ActionResult> UpdateMatch(int id, UpdateMatchRequest match)
         {
+            var updated = await service.UpdateMatchAsync(id, match);
+            return updated ? NoContent() : NotFound("Match with the given Id was not found. ");
         }
 
-        // DELETE api/<MatchController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<ActionResult> DeleteMatch(int id)
         {
+            var deleted = await service.DeleteMatchAsync(id);
+            return deleted ? NoContent() : NotFound("Match with the given Id was not found.");
         }
     }
 }
