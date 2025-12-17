@@ -10,6 +10,8 @@ namespace VideogameStatsApi.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            //Reference: Used to add Migration - https://youtu.be/RwQVRXEs370?si=A1w0dyVPy2rpg_PE&t=2956
+
             migrationBuilder.CreateTable(
                 name: "Games",
                 columns: table => new

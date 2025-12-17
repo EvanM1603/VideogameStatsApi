@@ -10,11 +10,11 @@ builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddSwaggerGen();
 
+// Reference: Added DbContext to the Program.cs - https://youtu.be/RwQVRXEs370?si=GIacU5Rxmkbqyynq&t=2796
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Reference: Created IGameService and GameService https://youtu.be/RwQVRXEs370?si=O2bIGmh8MfBt1CF_&t=1604 
-
+// Reference: Added Services and Service Interfaces - https://youtu.be/RwQVRXEs370?si=RoMOvWGPi6bd2YNl&t=1466
 builder.Services.AddScoped<IGameService, GameService>();
 //builder.Services.AddScoped<IMatchService, MatchService>();
 builder.Services.AddScoped<IPlayerService, PlayerService>();

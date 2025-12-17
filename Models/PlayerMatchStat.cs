@@ -1,5 +1,6 @@
 ﻿namespace VideogameStatsApi.Models
 {
+    // Reference: Created PlayerMatchStat model - https://youtu.be/RwQVRXEs370?si=O8ug9L7xNQpgcCkE&t=853
     // Represents the Stats of a Player in a Match
     public class PlayerMatchStat
     {
