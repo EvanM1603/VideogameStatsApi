@@ -9,18 +9,23 @@ namespace VideogameStatsApi.Services
     {
         // Reference: Created GameService - https://youtu.be/RwQVRXEs370?si=N1sEu7UzYicQTNFa&t=1885
 
-        // Add
+        /**
+         * Creates a Game
+         * */
         public async Task<GameResponse> AddGameAsync(CreateGameRequest game)
         {
+            // Create the Game
             var newGame = new Game
             {
                 Id = game.GameId,
                 Name = game.GameName
             };
 
+            // Add to the Database
             context.Games.Add(newGame);
             await context.SaveChangesAsync();
 
+            // Save to the GameResponse Dto
             return new GameResponse
             {
                 Id = newGame.Id,
@@ -28,19 +33,25 @@ namespace VideogameStatsApi.Services
             };
         }
 
-        // Delete
+        /**
+         * Deletes a Game using the Id
+         * */
         public async Task<bool> DeleteGameAsync(int id)
         {
+            // Check if the Game exists
             var gameToDelete = await context.Games.FindAsync(id);
             if (gameToDelete is null)
                 return false;
 
+            // Remove from the Database
             context.Games.Remove(gameToDelete);
             await context.SaveChangesAsync();
             return true;
         }
 
-        // Get all
+        /**
+         * Gets all Games
+         * */
         public async Task<List<GameResponse>> GetAllGamesAsync()
         => await context.Games.Select(g => new GameResponse
             {
@@ -48,7 +59,9 @@ namespace VideogameStatsApi.Services
                 Name = g.Name,
             }).ToListAsync();
 
-        // Get by Id
+        /**
+         * Gets a Game using the Id
+         * */
         public async Task<GameResponse?> GetGameByIdAsync(int id)
         {
             var result = await context.Games
@@ -62,7 +75,9 @@ namespace VideogameStatsApi.Services
             return result;
         }
 
-        // Get by name
+        /**
+         * Gets a Game using the Name
+         * */
         public async Task<GameResponse?> GetGameByNameAsync(string name)
         {
             var result = await context.Games
@@ -75,17 +90,22 @@ namespace VideogameStatsApi.Services
                 .FirstOrDefaultAsync();
             return result;
         }
-        
-        // Update
+
+        /**
+        * Updates an existing Game using the Id
+        * */
         public async Task<bool> UpdateGameAsync(int id, UpdateGameRequest game)
         {
+            // Check if the Game exists
             var existingGame = await context.Games.FindAsync(id);
             if(existingGame is null) 
                 return false;
 
+            // Update the Game
             existingGame.Id = game.GameId;
             existingGame.Name = game.GameName;
 
+            // Save the changes
             await context.SaveChangesAsync();
             return true;
         }
