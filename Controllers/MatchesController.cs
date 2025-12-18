@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using VideogameStatsApi.Authentication;
 using VideogameStatsApi.Dtos;
 using VideogameStatsApi.Services;
 
@@ -8,6 +9,7 @@ namespace VideogameStatsApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [ApiKey]
     public class MatchesController(IMatchService service) : ControllerBase
     {
         // Reference: Updated Controller after Dtos - https://youtu.be/RwQVRXEs370?si=edblfYxP61HN3ZPn&t=3617

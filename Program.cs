@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using VideogameStatsApi.Authentication;
 using VideogameStatsApi.Data;
 using VideogameStatsApi.Services;
 
@@ -9,6 +10,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddSwaggerGen();
+
+//Reference: Used to add to the Program.cs - https://youtu.be/0mb-wkkVMbg?si=DPwBIpp6MnI8N-wZ&t=277
+builder.Services.AddTransient<IApiKeyValidation, ApiKeyValidation>();
+builder.Services.AddScoped<ApiKeyAuthFilter>();
+
+builder.Services.AddHttpContextAccessor();
 
 // Reference: Added DbContext to the Program.cs - https://youtu.be/RwQVRXEs370?si=GIacU5Rxmkbqyynq&t=2796
 builder.Services.AddDbContext<AppDbContext>(options =>

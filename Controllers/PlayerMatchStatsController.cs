@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using VideogameStatsApi.Authentication;
 using VideogameStatsApi.Dtos;
 using VideogameStatsApi.Services;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -7,6 +8,7 @@ namespace VideogameStatsApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [ApiKey]
     public class PlayerMatchStatsController(IPlayerMatchStatService service) : ControllerBase
     {
         // Reference: Updated Controller after Dtos - https://youtu.be/RwQVRXEs370?si=edblfYxP61HN3ZPn&t=3617
