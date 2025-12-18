@@ -14,16 +14,21 @@ The services should be based around a CRUD pattern.
 **Requirements:**
 
 **1.** There should be a minimum of 4 types of services i.e., complete CRUD.
+
 **2.** Some type of identity management/authentication should be used, appropriate to your services.
 Consider login and/or API key generation.
+
 **3.** The data should use some form of persistent storage and avail of modern Design Patterns and
 Software Engineering principles. There should be a minimum of 3 tables using at least one oneto-many relationship. Separation of data storage should be achieved via interfaces and data
 returned to the client should be different than the data in the persistent storage i.e., use
 appropriate DTOs.
+
 **4.** The service should be deployed on the Internal DKIT cloud-based server infrastructure or on an
 external Cloud based Service (e.g., Azure, AWS).
+
 **5.** Testing: The Api should be tested and demonstrated using use cases with POSTMAN commands;
 the project should also contain appropriate unit tests. 
+
 **6.** Any extra facilities researched and added e.g., simple mobile client.
 
 
