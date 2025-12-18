@@ -102,7 +102,6 @@ namespace VideogameStatsApi.Services
                 return false;
 
             // Update the Game
-            existingGame.Id = game.GameId;
             existingGame.Name = game.GameName;
 
             // Save the changes

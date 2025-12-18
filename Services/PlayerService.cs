@@ -102,7 +102,6 @@ namespace VideogameStatsApi.Services
                 return false;
 
             // Update the Player
-            existingPlayer.Id = player.PlayerId;
             existingPlayer.InGameName = player.InGameName;
 
             // Save the changes

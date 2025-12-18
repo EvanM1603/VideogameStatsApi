@@ -4,8 +4,6 @@
     // DTO used to update an existing Match
     public class UpdateMatchRequest
     {
-        // The ID of the Match
-        public int MatchId { get; set; }
         // The ID of the Game the Match was played on
         public string Map { get; set; } = string.Empty;
         // The Result of the Match

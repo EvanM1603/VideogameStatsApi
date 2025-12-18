@@ -95,7 +95,6 @@ namespace VideogameStatsApi.Services
                 return false;
 
             // Update the Match
-            existingMatch.Id = match. MatchId;
             existingMatch.Map = match.Map;
             existingMatch.Result = match.Result;
 
