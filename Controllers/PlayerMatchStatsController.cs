@@ -1,43 +1,51 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
+using VideogameStatsApi.Dtos;
+using VideogameStatsApi.Services;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace VideogameStatsApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PlayerMatchStatsController : ControllerBase
+    public class PlayerMatchStatsController(IPlayerMatchStatService service) : ControllerBase
     {
         // Reference: Updated Controller after Dtos - https://youtu.be/RwQVRXEs370?si=edblfYxP61HN3ZPn&t=3617
+
+        // Get all PlayerMatchStats
         [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        public async Task<ActionResult<List<PlayerResponse>>> GetPlayerMatchStats()
+            => Ok(await service.GetAllPlayerMatchStatsAsync());
 
-        // GET api/<PlayerMatchStatController>/5
+        // Get PlayerMatchStat by Id
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<ActionResult<PlayerResponse>> GetPlayerMatchStatById(int id)
         {
-            return "value";
+            var player = await service.GetPlayerMatchStatByIdAsync(id);
+            return player is null ? NotFound("No Stat found with this id. ") : Ok(player);
         }
 
-        // POST api/<PlayerMatchStatController>
+        // Add PlayerMatchStat
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<ActionResult<PlayerResponse>> AddPlayerMatchStat(CreatePlayerMatchStatRequest stat)
         {
+            var createdStat = await service.AddPlayerMatchStatAsync(stat);
+            return CreatedAtAction(nameof(GetPlayerMatchStatById), new { id = createdStat.Id }, createdStat);
         }
 
-        // PUT api/<PlayerMatchStatController>/5
+        // Update existing PlayerMatchStat
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<ActionResult> UpdatePlayerMatchStat(int id, UpdatePlayerMatchStatRequest stat)
         {
+            var updated = await service.UpdatePlayerMatchStatAsync(id, stat);
+            return updated ? NoContent() : NotFound("Stat with the given Id was not found. ");
         }
 
-        // DELETE api/<PlayerMatchStatController>/5
+        // Delete existing PlayerMatchStat
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<ActionResult> DeletePlayerMatchStat(int id)
         {
+            var deleted = await service.DeletePlayerMatchStatAsync(id);
+            return deleted ? NoContent() : NotFound("Stat with the given Id was not found.");
         }
     }
 }
