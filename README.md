@@ -41,19 +41,19 @@ Used this video to help add Authentication -
 
 ## Tested CRUD:
 
-** Tested Create: ** <img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/98ec81e9-0d12-49e9-8c92-3417d4949d3f" />
+**Tested Create:** <img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/98ec81e9-0d12-49e9-8c92-3417d4949d3f" />
 
-** Tested Read: ** <img width="1917" height="1079" alt="image" src="https://github.com/user-attachments/assets/c534a5a5-c0dd-4293-9781-b51c90f076f3" />
+**Tested Read:** <img width="1917" height="1079" alt="image" src="https://github.com/user-attachments/assets/c534a5a5-c0dd-4293-9781-b51c90f076f3" />
 
-** Tested Update: ** <img width="1917" height="1079" alt="image" src="https://github.com/user-attachments/assets/558f6e3a-d498-4924-8ad5-1223d42fd13a" />
+**Tested Update:** <img width="1917" height="1079" alt="image" src="https://github.com/user-attachments/assets/558f6e3a-d498-4924-8ad5-1223d42fd13a" />
 
-** Tested Delete: ** <img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/1a7eb324-6846-4ca0-91fb-8e3975c5a4bf" />
+**Tested Delete:** <img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/1a7eb324-6846-4ca0-91fb-8e3975c5a4bf" />
 
 
 ## Tested Authentication:
 
-** Tested with the Right API Key: ** <img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/25a9aad8-6abd-44c3-9280-f9d9a8ffc3d8" />
+**Tested with the Right API Key:** <img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/25a9aad8-6abd-44c3-9280-f9d9a8ffc3d8" />
 
-** Tested with the Wrong API Key: **  <img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/70c09c5a-60c5-4c31-883c-f6415d1f3e24" />
+**Tested with the Wrong API Key:**  <img width="1919" height="1079" alt="image" src="https://github.com/user-attachments/assets/70c09c5a-60c5-4c31-883c-f6415d1f3e24" />
 
-** Tested with No API Key: **  <img width="1917" height="1079" alt="image" src="https://github.com/user-attachments/assets/c06422ba-faae-4213-8b0f-275c38433df0" />
+**Tested with No API Key:**  <img width="1917" height="1079" alt="image" src="https://github.com/user-attachments/assets/c06422ba-faae-4213-8b0f-275c38433df0" />
