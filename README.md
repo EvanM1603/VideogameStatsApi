@@ -38,8 +38,6 @@ Used this video as a reference to help create CRUD functionality - https://youtu
 
 Used this video to help add Authentication - https://youtu.be/0mb-wkkVMbg?si=dmaLMZjuJ5Fnro4o 
 
-Used this video to add unit tests - https://youtu.be/24ytq8JP2jI?si=DI93Fkpx8TiC-uJN&t=1
-
 
 ## Tested CRUD:
 
