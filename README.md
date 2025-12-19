@@ -38,6 +38,13 @@ Used this video as a reference to help create CRUD functionality - https://youtu
 
 Used this video to help add Authentication - https://youtu.be/0mb-wkkVMbg?si=dmaLMZjuJ5Fnro4o 
 
+Used to help deploy to cloud - https://youtu.be/F33QoaG4ufE?si=dZcNn_uPNtJi6xcx
+
+Deployed App - https://videogamestatsapp-evan-e6a7e0hzcbfrdeav.westeurope-01.azurewebsites.net/api/games
+
+## Known Issues:
+
+Getting an error 500 on deployment when trying to use with postman, not sure what the issue is.
 
 ## Tested CRUD:
 
